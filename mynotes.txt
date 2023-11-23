@@ -1,0 +1,23 @@
+ShortURL Microservice
+
+install these
+npm install valid-url (to validate URL's)
+npm install mongodb
+npm install mongoose
+
+code explanation : 
+in app.post 
+-1st middleware 
+the reason why there is a try_catch block is
+to catch any errors when an invalid url is being posted.
+and then inside it there is 2 different checking procedure the first one is 
+to check if a url is in the correct format -> httpS://example.com/route/api
+the second one is to prevent a url without TLD -> https://axel
+without the dns lookup the url will be submitted
+
+-2nd middleware
+it checks whether a url is already in the database and then returns the url and the short url
+
+-3rd middleware
+when there is no matching url in database it will generate new number for the short url
+and then it will save the data inside the database
