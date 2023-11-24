@@ -8,6 +8,8 @@ This is the boilerplate code for the URL Shortener Microservice project. Instruc
 <li> it will give you the short url </li>
 <li> access it with "this-project-url"/api/shorturl/"the-short-url" </li>
 
+<br>
+
 example : 
 <li> https://www.youtube.com => shortUrl: 90 </li>
 <li> localhost:3000/api/shorturl/90 => redirect to youtube.com </li>
