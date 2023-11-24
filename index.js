@@ -103,9 +103,22 @@ app.post('/api/shorturl',bodyParser.urlencoded({ extended: false }),
 
 });
 
-// app.get('/api/shorturl/:shorturl', (req,res) => {
-//   // redirect to the original url
-// });
+app.get('/api/shorturl/:shorturl', (req,res) => {
+  // check if shorturl already exist in database
+  URLModel.findOne({short_url: req.params.shorturl}, (err,data) => {
+    if(err){
+      console.error(err);
+      return res.json({error: 'internal server error'})
+    }
+
+    // redirect to the original url
+    if(data){
+      res.redirect(data.original_url);
+    }else{
+      res.json({error: "invalid url"});
+    }
+  });
+});
 
 app.listen(port, function() {
   console.log(`Listening on port ${port}`);
